@@ -1,0 +1,165 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap');
+
+@theme inline {
+  --font-body: 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+
+  --color-bg: hsl(var(--bg));
+  --color-surface: hsl(var(--surface));
+  --color-text-primary: hsl(var(--text));
+  --color-muted: hsl(var(--muted));
+  --color-stroke: hsl(var(--stroke));
+  --color-accent: hsl(var(--accent));
+
+  --color-background: hsl(var(--bg));
+  --color-foreground: hsl(var(--text));
+  --color-border: hsl(var(--stroke));
+}
+
+:root {
+  --bg: 0 0% 3%;
+  --surface: 0 0% 6%;
+  --text: 36 22% 92%;
+  --muted: 0 0% 42%;
+  --stroke: 0 0% 14%;
+  --accent: 250 90% 76%;
+  --page-gradient: linear-gradient(
+    180deg,
+    #1a0508 0%,
+    #2e0810 18%,
+    #4a0e1e 35%,
+    #5c1528 50%,
+    #4a0e1e 65%,
+    #2e0810 82%,
+    #1a0508 100%
+  );
+}
+
+.light {
+  --bg: 250 100% 99%;
+  --surface: 250 60% 96%;
+  --text: 250 40% 12%;
+  --muted: 250 10% 45%;
+  --stroke: 250 30% 88%;
+  --accent: 250 70% 55%;
+  --page-gradient: linear-gradient(
+    180deg,
+    #fff5fa 0%,
+    #ffe8f2 18%,
+    #ffd6ea 35%,
+    #f7c2e0 50%,
+    #ffd6ea 65%,
+    #ffe8f2 82%,
+    #fff5fa 100%
+  );
+}
+
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+@keyframes arrow-down {
+  0% { transform: translateY(-4px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
+}
+@keyframes split-up {
+  to { transform: translateY(-100%); }
+}
+@keyframes split-down {
+  to { transform: translateY(100%); }
+}
+
+.accent-gradient {
+  background: linear-gradient(90deg, #FF9EC4 0%, #E0A8FF 50%, #FFC2A8 100%);
+}
+.accent-text {
+  background: linear-gradient(90deg, #FF9EC4 0%, #E0A8FF 50%, #FFC2A8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Grain overlay */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/></svg>");
+  animation: grain-shift 8s steps(8) infinite;
+}
+/* Animated blush overlay */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,158,196,0.18), transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(224,168,255,0.16), transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(255,194,168,0.14), transparent 55%),
+    radial-gradient(circle at 10% 75%, rgba(255,158,196,0.12), transparent 50%);
+  animation: blush-drift 18s ease-in-out infinite;
+}
+@keyframes grain-shift {
+  0%   { transform: translate(0,0); }
+  20%  { transform: translate(-3%, 2%); }
+  40%  { transform: translate(2%, -3%); }
+  60%  { transform: translate(-2%, -2%); }
+  80%  { transform: translate(3%, 3%); }
+  100% { transform: translate(0,0); }
+}
+@keyframes blush-drift {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50%      { transform: translate3d(-2%, 1%, 0) scale(1.05); }
+}
+
+html { scroll-behavior: auto; }
+html, body { color: hsl(var(--text)); }
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  background: var(--page-gradient);
+  background-attachment: fixed;
+  transition: background 600ms ease, color 400ms ease;
+}
+
+
+* { border-color: hsl(var(--stroke)); }
+::selection { background: rgba(167,139,250,0.4); color: hsl(var(--text)); }
+
+.chapter-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  color: hsl(var(--text));
+  opacity: 0.05;
+  font-size: clamp(20rem, 40vw, 40rem);
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  user-select: none;
+}
+
+.serif-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+}
