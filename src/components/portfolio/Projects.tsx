@@ -12,6 +12,14 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    title: "Rainbow Prediction Framework",
+    blurb: "ATMOSPHERIC ML · RESEARCH · arXiv (in progress)",
+    detail:
+      "1.49M NASA POWER atmospheric records, 26 physics-derived features, and an XGBoost/RF/LightGBM ensemble, targeting an arXiv physics.ao-ph submission.",
+    tags: ["XGBoost", "LightGBM", "Random Forest", "Python", "NASA POWER"],
+    href: "https://github.com/Lavee3",
+  },
+  {
     title: "Resume Reviewer AI",
     blurb: "NLP system that scores resumes against job descriptions.",
     detail:

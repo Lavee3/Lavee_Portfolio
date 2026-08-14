@@ -4,6 +4,8 @@ import Reveal from "./Reveal";
 const LEFT = [
   "Supervised Learning",
   "Feature Engineering",
+  "Tensorflow",
+  "PyTorch",
   "XGBoost",
   "Ensemble Methods",
   "NLP",

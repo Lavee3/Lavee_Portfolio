@@ -82,7 +82,7 @@ export default function Contact() {
       </div>
 
       <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-[10px] uppercase tracking-[0.35em] text-muted z-10">
-        <span>© 2025 Laveena Armarkar</span>
+        <span>© 2026 Laveena Armarkar</span>
         <span className="flex items-center gap-2">
           <span
             className="w-1.5 h-1.5 rounded-full bg-emerald-400"
